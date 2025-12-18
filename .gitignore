@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Data files (large, not committed)
+*.jsonl
+input/
+output/
+
+# Environment
+.env*
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
