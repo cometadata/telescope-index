@@ -22,6 +22,8 @@ from datetime import datetime, timezone
 
 from tqdm import tqdm
 
+from extractors import SoftwareExtractor
+
 
 def convert_decimals(obj):
     if isinstance(obj, Decimal):
@@ -230,6 +232,9 @@ def main():
 
     ror_lookup = load_ror_lookup(ror_file)
 
+    # Initialize extractors for relatedIdentifiers
+    extractors = [SoftwareExtractor()]
+
     print("Counting works...")
     total_works = count_lines(works_file)
     print(f"Found {total_works} works")
@@ -355,6 +360,12 @@ def main():
                     "has_publication": bool(extract_publication_link(work)),
                     "author_affiliations": orjson.dumps(author_affiliations_list).decode("utf-8")
                 }
+
+                # Run extractors on the record
+                for extractor in extractors:
+                    extracted_fields = extractor.extract(work)
+                    ts_doc.update(extracted_fields)
+
                 ts_out.write(orjson.dumps(ts_doc) + b"\n")
 
     print(f"Found {len(all_ror_ids)} unique institutions")
