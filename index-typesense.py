@@ -60,6 +60,9 @@ WORKS_SCHEMA = {
         {"name": "publication_link", "type": "string", "optional": True},
         {"name": "has_publication", "type": "bool", "facet": True},
         {"name": "author_affiliations", "type": "string", "index": False},
+        {"name": "software_repository", "type": "string", "optional": True},
+        {"name": "software_references", "type": "string[]", "optional": True},
+        {"name": "has_software", "type": "bool", "facet": True},
     ],
     "default_sorting_field": "year",
 }
