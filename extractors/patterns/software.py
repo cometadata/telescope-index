@@ -142,25 +142,20 @@ def is_software_url(url: str) -> bool:
     if not url:
         return False
 
-    # Exclude GitHub Pages
     if is_github_pages(url):
         return False
 
-    # Exclude non-code paths
     if is_excluded_path(url):
         return False
 
-    # Check package registries
     for pattern in PACKAGE_REGISTRY_PATTERNS.values():
         if pattern.search(url):
             return True
 
-    # Check code repositories
     for pattern in CODE_REPO_PATTERNS.values():
         if pattern.search(url):
             return True
 
-    # Check software archives
     for pattern in SOFTWARE_ARCHIVE_PATTERNS.values():
         if pattern.search(url):
             return True
