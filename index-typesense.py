@@ -63,6 +63,8 @@ WORKS_SCHEMA = {
         {"name": "software_repository", "type": "string", "optional": True},
         {"name": "software_references", "type": "string[]", "optional": True},
         {"name": "has_software", "type": "bool", "facet": True},
+        {"name": "has_software_repository", "type": "bool", "facet": True},
+        {"name": "has_software_references", "type": "bool", "facet": True},
     ],
     "default_sorting_field": "year",
 }

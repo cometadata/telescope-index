@@ -36,6 +36,8 @@ class SoftwareExtractor(RelatedIdentifierExtractor):
             - software_repository: str (first IsSupplementedBy URL, or empty)
             - software_references: list[str] (all References URLs)
             - has_software: bool (True if any software URLs found)
+            - has_software_repository: bool (True if software_repository exists)
+            - has_software_references: bool (True if software_references exist)
         """
         related_identifiers = self._get_related_identifiers(record)
 
@@ -66,4 +68,6 @@ class SoftwareExtractor(RelatedIdentifierExtractor):
             "software_repository": software_repository,
             "software_references": software_references,
             "has_software": has_software,
+            "has_software_repository": bool(software_repository),
+            "has_software_references": bool(software_references),
         }
